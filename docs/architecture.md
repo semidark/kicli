@@ -2,9 +2,7 @@
 
 ## Overview
 
-**kicli** is a fast, keyboard-driven terminal application that seamlessly integrates a PTY shell and an LLM-powered AI assistant within a modern, keyboard-centric TUI. Its mission is to provide effortless access to AI-enhanced command-line workflows—without sacrificing speed, privacy, or the classic shell user experience.
-
-The design is guided by modularity, security, and ease of contribution. kicli leverages modern Go libraries such as [Bubbletea](https://github.com/charmbracelet/bubbletea) (for TUI) and [modernc.org/sqlite](https://github.com/cznic/sqlite) (for CGO-free local storage).
+The design of kicli is guided by modularity, security, and ease of contribution. kicli leverages modern Go libraries such as [Bubbletea](https://github.com/charmbracelet/bubbletea) (for TUI) and [modernc.org/sqlite](https://github.com/cznic/sqlite) (for CGO-free local storage).
 
 
 ---
@@ -40,25 +38,7 @@ The design is guided by modularity, security, and ease of contribution. kicli le
 
 ---
 
-## Success Criteria
 
-kicli 1.0 is considered **done** when:
-
-- Works on Linux and macOS (Windows support after 1.0)
-- Launches a PTY shell, fully scrollable/viewable with Bubbletea
-- AI chat pane, command suggestion, and command confirmation implemented
-- No AI-suggested code is executed without explicit user confirmation
-- All history is stored locally, CGO-free (in SQLite)
-- Config files and history follow XDG
-- Zero telemetry; no external calls except your chosen LLM
-
----
-
-## Non-goals & Scope
-
-- Not an IDE, SSH client, or terminal multiplexer (inspired by tmux, but not aiming to replace it)
-- No full local LLM inference; only acts as a client (API interface) to OpenAI API-compatible endpoints
-- No non-Go dependencies requiring CGO (SQLite and others via pure Go)
 
 ---
 
