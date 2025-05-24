@@ -6,6 +6,7 @@ This document outlines the phased implementation roadmap for **kicli**, includin
 
 ## Table of Contents
 
+- success criteria and non-goals
 - [Roadmap Structure](#roadmap-structure)
 - [Phase 1 (v0.1.0): Core Terminal & Foundation](#phase-1-v010-core-terminal--foundation)
 - [Phase 2 (v0.5.0): AI Features & Command Suggestion](#phase-2-v050-ai-features--command-suggestion)
@@ -17,6 +18,27 @@ This document outlines the phased implementation roadmap for **kicli**, includin
 - [Known Non-Goals / Deferrals](#known-non-goals--deferrals)
 
 ---
+
+## Success Criteria
+
+kicli 1.0 is considered **done** when:
+
+- Works on Linux and macOS (Windows support after 1.0)
+- Launches a PTY shell, fully scrollable/viewable with Bubbletea
+- AI chat pane, command suggestion, and command confirmation implemented
+- No AI-suggested code is executed without explicit user confirmation
+- All history is stored locally, CGO-free (in SQLite)
+- Config files and history follow XDG
+- Zero telemetry; no external calls except your chosen LLM
+
+---
+
+## Non-goals & Scope
+
+- Not an IDE, SSH client, or terminal multiplexer (inspired by tmux, but not aiming to replace it)
+- No full local LLM inference; only acts as a client (API interface) to OpenAI API-compatible endpoints
+- No non-Go dependencies requiring CGO (SQLite and others via pure Go)
+
 
 ## Roadmap Structure
 
