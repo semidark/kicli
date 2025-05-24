@@ -1,7 +1,3 @@
-Absolutely! Here is a **complete, expanded** `docs/architecture.md` for **kicli**, with a rich **Component Design** section added. This version is organized, clear, and ready for contributors/maintainers.
-
----
-
 # kicli Architecture
 
 ## Overview
