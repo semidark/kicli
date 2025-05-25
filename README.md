@@ -81,12 +81,7 @@ go build ./cmd/kicli
 
 ---
 
-## Keybindings
-
-- **Pane Focus:** `Ctrl+←` / `Ctrl+→` — Move between Shell, AI chat, or Command field
-- **Scroll:** `Ctrl+↑` / `Ctrl+↓` — Scroll panes (when focused)
-- **Run Suggested Command:** In "Command Generation Field", press `Enter`
-- **Customizable:** See [docs/keybindings.md](docs/keybindings.md)
+- **Customizable key bindings:** See [docs/keybindings.md](docs/keybindings.md)
 
 ---
 
