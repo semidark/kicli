@@ -82,17 +82,17 @@ See [keybindings.md](keybindings.md) for more.
 
 ### Core Libraries
 
-| Library                      | Purpose                                      |
-|------------------------------|----------------------------------------------|
-| Bubbletea                    | Terminal UI (TUI) framework                  |
-| Lipgloss                     | Styling and layout for TUI                   |
-| Bubbles                      | TUI components for inputs, viewports, etc.   |
-| creack/pty                   | PTY spawn and shell communication           |
-| modernc.org/sqlite           | CGO-free embedded SQLite                     |
-| sashabaranov/go-openai       | OpenAI (and compatible) API client           |
-| glamour                      | Markdown terminal rendering                  |
-| gopkg.in/yaml.v3             | YAML config parsing                          |
-| adrg/xdg                     | XDG-compliant config/data location (optional)|
+| Library                      | Purpose                                      | Status      |
+|------------------------------|----------------------------------------------|-------------|
+| Bubbletea                    | Terminal UI (TUI) framework                  | ✅ Implemented |
+| Lipgloss                     | Styling and layout for TUI                   | ✅ Implemented |
+| Bubbles                      | TUI components for inputs, viewports, etc.   | ✅ Implemented |
+| gopkg.in/yaml.v3             | YAML config parsing                          | ✅ Implemented |
+| adrg/xdg                     | XDG-compliant config/data location           | ✅ Implemented |
+| creack/pty                   | PTY spawn and shell communication           | 🔄 Planned |
+| modernc.org/sqlite           | CGO-free embedded SQLite                     | 🔄 Planned |
+| sashabaranov/go-openai       | OpenAI (and compatible) API client           | 🔄 Planned |
+| glamour                      | Markdown terminal rendering                  | 🔄 Planned |
 
 Why: All selected for pure-Go, cross-platform capability (**CGO is never required**).
 
@@ -154,7 +154,7 @@ kicli/
 - Canonical interface:
   - `Start(shellCmd, rows, cols)`
   - `Write([]byte)`
-  - `ReadChan() <-chan []byte` // emits shell output lines/data
+  - `ReadChan() <-chan []byte` // emits shell output lines/data
   - `SetSize(rows, cols)`
   - `GetVisibleBuffer() string` (for AI context)
   - Handles process exit/cleanup and errors

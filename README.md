@@ -38,22 +38,25 @@
 
 ### 1. **Requirements**
 
-- Go 1.18+ (pure Go dependencies, no CGO)
+- Go 1.23+ (pure Go dependencies, no CGO)
 - Linux or macOS (Windows support planned)
 
 ## Dependencies
 
 kicli relies on the following major libraries:
 
+### Currently Implemented
 - [Bubbletea](https://github.com/charmbracelet/bubbletea) — TUI framework
 - [Lipgloss](https://github.com/charmbracelet/lipgloss) — Styling
+- [Bubbles](https://github.com/charmbracelet/bubbles) — TUI components
+- [gopkg.in/yaml.v3](https://gopkg.in/yaml.v3) — YAML config parsing
+- [adrg/xdg](https://github.com/adrg/xdg) — XDG path handling
+
+### Planned Dependencies
 - [creack/pty](https://github.com/creack/pty) — PTY shell support
 - [modernc.org/sqlite](https://github.com/cznic/sqlite) — Pure-Go SQLite backend
 - [sashabaranov/go-openai](https://github.com/sashabaranov/go-openai) — OpenAI API client
 - [glamour](https://github.com/charmbracelet/glamour) — Markdown rendering
-- [bubbles](https://github.com/charmbracelet/bubbles) — TUI components
-- [gopkg.in/yaml.v3](https://gopkg.in/yaml.v3) — YAML
-- [adrg/xdg](https://github.com/adrg/xdg) — XDG path handling)
 
 Full dependency details: see [`go.mod`](go.mod).
 

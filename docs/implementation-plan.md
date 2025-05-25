@@ -51,10 +51,10 @@ kicli 1.0 is considered **done** when:
 
 Establish a minimal working skeleton with core shell functionality, config, and history.
 
-- [ ] Project scaffolding: directory layout (`cmd/`, `internal/`, etc.), `go.mod`
-- [ ] Configuration: XDG YAML config, environment variable overrides
+- [x] Project scaffolding: directory layout (`cmd/`, `internal/`, etc.), `go.mod`
+- [x] Configuration: XDG YAML config, environment variable overrides
 - [ ] Storage: SQLite (`modernc.org/sqlite`), `HistoryStore` for shell commands
-- [ ] Main Bubbletea model (`KicliModel`) with config & storage integration
+- [x] Main Bubbletea model (`KicliModel`) with config & storage integration
 - [ ] PTY handling: launch shell, I/O, scrolling; `ptyhandler` package
 - [ ] TUI layout: 65%/35% split, placeholder AI/chat, command input field
 - [ ] Keyboard navigation: Focus switching via `Ctrl+← / →`
@@ -144,13 +144,13 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 | Milestone                                  | v0.1.0 | v0.5.0 | v0.9.0 | v1.0.0 | v1.1.0+ |
 |---------------------------------------------|:------:|:------:|:------:|:------:|:-------:|
-| Core shell, config, split TUI, history      |   ☑️   |   -    |   -    |   -    |    -    |
+| Core shell, config, split TUI, history      |   🔄   |   -    |   -    |   -    |    -    |
 | AI Chat, suggestion, safe command exec      |   -    |   ☑️   |   -    |   -    |    -    |
 | Streaming, errors, polish, smart scroll     |   -    |   -    |   ☑️   |   -    |    -    |
 | Final docs, bugfix, stabilization           |   -    |   -    |   -    |   ☑️   |    -    |
 | Plugins, Windows, theming, clipboard, etc   |   -    |   -    |   -    |   -    |   ☑️    |
 
-(Check ☑️ as features are delivered.)
+(🔄 = In Progress, ☑️ = Complete)
 
 ---
 

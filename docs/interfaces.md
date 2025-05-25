@@ -15,7 +15,7 @@ This document is the single source-of-truth for **all public Go interfaces** tha
    ‑ [PTYManager](#ptymanager)  
    ‑ [AIClient](#aiclient)  
    ‑ [HistoryStore](#historystore)  
-   ‑ [ConfigProvider](#configprovider) *(internal)*  
+   ‑ [ConfigManager](#configmanager) *(internal)*  
 3. [Bubble Tea Message Types](#bubble-tea-message-types)  
 4. [Error-Handling Patterns](#error-handling-patterns)  
 5. [Versioning & Compatibility](#versioning--compatibility)
@@ -199,19 +199,24 @@ Implementation notes
 
 ---
 
-### ConfigProvider (internal)
+### ConfigManager (internal)
 
 For completeness; mostly used inside `configmanager`.
 
 ```go
 // Package configmanager
-type ConfigProvider interface {
-    // Load reads config from fs/env, returns concrete AppConfig.
+type ConfigManager interface {
+    // Load reads configuration from file and environment variables
     Load() (AppConfig, error)
-    // Save writes the supplied cfg to disk (non-atomic overwrite).
+
+    // Save writes configuration to the config file
     Save(cfg AppConfig) error
-    // Watch returns a channel that emits AppConfig updates.
-    Watch() <-chan AppConfig
+
+    // GetConfigPath returns the path where config should be stored
+    GetConfigPath() (string, error)
+
+    // GetDataPath returns the path where data should be stored
+    GetDataPath() (string, error)
 }
 ```
 

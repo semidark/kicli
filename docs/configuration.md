@@ -37,11 +37,21 @@ kicli always launches your *default* interactive shell based on your system. The
 - **Windows:**  
   Not yet supported (planned; Windows native settings will follow XDG-like layout).
 
-If the config file does not exist, kicli will prompt with an error.
+**Graceful Degradation:**  
+If the config file does not exist, kicli will use built-in defaults combined with environment variables. You only need a config file if you want to customize settings beyond what environment variables provide.
 
 ---
 
 ## Quickstart: First-Time Setup
+
+**Option 1: Using Environment Variables (Recommended)**
+
+```sh
+export KICLI_API_KEY=sk-xxxxxx
+./kicli
+```
+
+**Option 2: Using Configuration File**
 
 1. **Copy the sample configuration:**
 
@@ -66,7 +76,7 @@ If the config file does not exist, kicli will prompt with an error.
 
 ## Configuration Schema & Options
 
-Here’s the structure of `config.yaml` (with all fields and comments):
+Here's the structure of `config.yaml` (with all fields and comments):
 
 ```yaml
 # ~/.config/kicli/config.yaml
@@ -105,11 +115,15 @@ All sections/keys are **optional** (internal defaults are used), except the AI A
 
 For sensitive settings and easy scripting, **any config key can be overridden with an environment variable** (just use the capitalized, `KICLI_`-prefixed version):
 
-| Setting path       | Environment Variable         | Example Value                      |
-|--------------------|-----------------------------|------------------------------------|
-| `ai.api_key`       | `KICLI_API_KEY`             | `sk-xxxxxxx`                       |
-| `ai.api_url`       | `KICLI_API_URL`             | `https://api.ollama.example/v1/...`|
-| `ai.model_name`    | `KICLI_MODEL_NAME`          | `gpt-3.5-turbo`                    |
+| Setting path                    | Environment Variable            | Example Value                      |
+|---------------------------------|--------------------------------|------------------------------------|
+| `ai.api_key`                   | `KICLI_API_KEY`                | `sk-xxxxxxx`                       |
+| `ai.api_url`                   | `KICLI_API_URL`                | `https://api.ollama.example/v1/...`|
+| `ai.model_name`                | `KICLI_MODEL_NAME`             | `gpt-3.5-turbo`                    |
+| `ai.streaming_enabled`         | `KICLI_STREAMING_ENABLED`      | `true` or `false`                  |
+| `advanced.max_scrollback_lines`| `KICLI_MAX_SCROLLBACK_LINES`   | `5000`                             |
+| `advanced.max_context_messages`| `KICLI_MAX_CONTEXT_MESSAGES`   | `20`                               |
+| `advanced.ai_timeout_seconds`  | `KICLI_AI_TIMEOUT_SECONDS`     | `30`                               |
 
 **Precedence:**  
 1. Environment variable  
@@ -120,7 +134,7 @@ For sensitive settings and easy scripting, **any config key can be overridden wi
 
 ## Secrets and API Keys
 
-**It’s strongly recommended to provide your API keys via environment variables** rather than storing them in `config.yaml`.  
+**It's strongly recommended to provide your API keys via environment variables** rather than storing them in `config.yaml`.  
 For example:
 
 ```sh
@@ -166,7 +180,7 @@ No data is ever sent anywhere else, except when included as LLM prompt context f
 ## Troubleshooting
 
 - **Missing config:**  
-  kicli will report a missing `config.yaml` and exit.
+  kicli will use built-in defaults. Only an API key is required (via environment variable or config file).
 - **Malformed YAML:**  
   kicli will show the parse error at startup.
 - **Invalid API key/endpoint:**  
@@ -187,5 +201,5 @@ If problems persist, please [open an issue](https://github.com/semidark/kicli/is
 
 ---
 
-**kicli always uses your system’s default shell.**  
+**kicli always uses your system's default shell.**  
 No extra configuration is required for your shell.
