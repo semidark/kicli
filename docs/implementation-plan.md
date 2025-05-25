@@ -25,11 +25,10 @@ kicli 1.0 is considered **done** when:
 
 - Works on Linux and macOS (Windows support after 1.0)
 - Launches a PTY shell, fully scrollable/viewable with Bubbletea
-- AI chat pane, command suggestion, and command confirmation implemented
+- AI chat pane, command generator, and command confirmation implemented
 - No AI-suggested code is executed without explicit user confirmation
 - All history is stored locally, CGO-free (in SQLite)
 - Config files and history follow XDG
-- Zero telemetry; no external calls except your chosen LLM
 
 ---
 
@@ -135,9 +134,6 @@ Rich, extensible, and even more flexible kicli experience for advanced users and
 ## Contribution Flow
 
 - Track status with checkboxes in this file.
-- Open issues for features, bugs, and clarifications.
-- Always branch from latest `main`, follow naming conventions.
-- Submit PRs with clear, descriptive titles; link to relevant issues.
 - All code must be formatted (`go fmt`) and include tests if adding non-trivial behavior.
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md).
@@ -155,15 +151,6 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md).
 | Plugins, Windows, theming, clipboard, etc   |   -    |   -    |   -    |   -    |   ☑️    |
 
 (Check ☑️ as features are delivered.)
-
----
-
-## Known Non-Goals / Deferrals
-
-- No graphical/modal GUIs or IDE code editing
-- No SSH, package manager, or remote/cluster integration
-- No embedded LLM inference: always relies on user-supplied endpoint
-- No telemetry, analytics, or silent outbound network calls—ever
 
 ---
 
