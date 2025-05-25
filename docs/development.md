@@ -213,8 +213,8 @@ As of the current version, the following components are implemented:
 - ✅ **Basic Bubbletea model skeleton**
 - ✅ **Message type definitions**
 - ✅ **Configuration type definitions**
-- ⏳ **Configuration loading** (next priority)
-- ⏳ **PTY handler implementation**
+- ✅ **Configuration loading** (YAML + env vars + validation)
+- ⏳ **PTY handler implementation** (next priority)
 - ⏳ **AI client implementation**
 - ⏳ **Storage backend**
 - ⏳ **TUI layout and styling**

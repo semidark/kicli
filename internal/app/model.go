@@ -4,14 +4,17 @@ import (
 	"github.com/charmbracelet/bubbles/textinput"
 	"github.com/charmbracelet/bubbles/viewport"
 	tea "github.com/charmbracelet/bubbletea"
+
+	"github.com/semidark/kicli/internal/configmanager"
 )
 
 // KicliModel represents the main application state for the Bubbletea TUI
 type KicliModel struct {
 	// Core components (interfaces defined in docs/interfaces.md)
+	configManager configmanager.ConfigManager
+	config        configmanager.AppConfig
 	// ptyManager   ptyhandler.PTYManager
 	// aiClient     aiclient.AIClient
-	// config       configmanager.AppConfig
 	// db           storage.HistoryStore
 
 	// UI components
@@ -40,10 +43,29 @@ const (
 	FocusCommandGen
 )
 
+// NewKicliModel creates a new instance of the main application model
+func NewKicliModel() (*KicliModel, error) {
+	configManager, err := configmanager.New()
+	if err != nil {
+		return nil, err
+	}
+
+	return &KicliModel{
+		configManager: configManager,
+		isLoading:     true,
+	}, nil
+}
+
 // Init initializes the model (required by Bubbletea)
 func (m KicliModel) Init() tea.Cmd {
-	// TODO: Initialize components and return initial commands
-	return nil
+	// Load configuration as the first step
+	return func() tea.Msg {
+		cfg, err := m.configManager.Load()
+		return ConfigLoadedMsg{
+			Cfg: cfg,
+			Err: err,
+		}
+	}
 }
 
 // Update handles messages and updates the model (required by Bubbletea)
@@ -53,6 +75,17 @@ func (m KicliModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.windowWidth = msg.Width
 		m.windowHeight = msg.Height
 		// TODO: Update viewport sizes based on layout (65%/35% split)
+
+	case ConfigLoadedMsg:
+		if msg.Err != nil {
+			m.errorMessage = "Failed to load configuration: " + msg.Err.Error()
+			m.isLoading = false
+			return m, nil
+		}
+		m.config = msg.Cfg
+		m.isLoading = false
+		// TODO: Initialize other components with the loaded config
+		return m, nil
 
 	case tea.KeyMsg:
 		// TODO: Handle keyboard navigation and input
@@ -82,5 +115,13 @@ func (m KicliModel) View() string {
 		return "Initializing kicli..."
 	}
 
-	return "kicli TUI - Under construction\n\nPress 'q' or Ctrl+C to quit"
+	if m.isLoading {
+		return "Loading configuration..."
+	}
+
+	if m.errorMessage != "" {
+		return "Error: " + m.errorMessage + "\n\nPress 'q' or Ctrl+C to quit"
+	}
+
+	return "kicli TUI - Under construction\n\nConfiguration loaded successfully!\n\nPress 'q' or Ctrl+C to quit"
 }

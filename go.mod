@@ -5,8 +5,10 @@ go 1.23.0
 toolchain go1.24.3
 
 require (
+	github.com/adrg/xdg v0.5.3
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.5
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
